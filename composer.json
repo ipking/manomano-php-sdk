@@ -1,0 +1,21 @@
+{
+    "name": "ipking/manomano-php",
+    "description": "ManoMano PHP API.",
+    "type": "library",
+    "license": "Apache-2.0",
+	"homepage": "https://github.com/ipking/manomano-php-sdk/",
+    "authors": [{
+        "name": "ipking",
+        "email": "667997@gmail.com"
+    }],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+    },
+    "autoload": {
+        "psr-4": {
+            "ManoMano\\": "src/"
+        }
+    }
+}
