@@ -51,11 +51,6 @@ class LastOrderList extends Method{
 	}
 	
 	private function address($address){
-		$address['company'] = $address['company']?:'';
-		$address['region_1'] = $address['region_1']?:'';
-		$address['region_2'] = $address['region_2']?:'';
-		$address['region_3'] = $address['region_3']?:'';
-		
 		$fields = array(
 			'address_1',
 			'address_2',
