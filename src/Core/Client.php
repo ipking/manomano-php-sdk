@@ -11,6 +11,8 @@ class Client{
 	public static $login = '';
 	public static $password = '';
 	
+	public static $last_response = '';
+	
 	public static function setLogin($login){
 		self::$login = $login;
 	}
@@ -24,14 +26,14 @@ class Client{
 	}
 	
 	private static function getMethodUrl(Method $request){
-		$params = [
+		$params = array(
 			'login'    => self::$login,
 			'password' => self::$password,
 			'method'   => $request->method,
-		];
+		);
 		$params = array_merge($params,$request->getParams());
 		
-		$arr = [];
+		$arr = array();
 		foreach($params as $key => $value){
 			if(!$value){
 				continue;
@@ -59,7 +61,7 @@ class Client{
 	 * @throws \Exception
 	 */
 	private static function request($url){
-		$rep = Http::curl($url);
+		self::$last_response = $rep = Http::curl($url);
 		$array = self::xmlToArray($rep);
 		if($array[0] ===false || $array['code'] != self::SUCCESS_CODE){
 			throw new \Exception('request error: ' . ($array['message']?:''),$array['code']);
